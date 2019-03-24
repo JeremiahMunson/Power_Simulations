@@ -38,6 +38,8 @@ def run(components, modes):
         errorTxt = "Could not find file at " + location
         locationError = tk.Label(fileGUI, text = errorTxt)
 
+        fileGap = tk.Label(fileGUI, text = "\t \t \t \t \t \t \t")
+
         fileContinue = tk.Button(fileGUI, text = "CONTINUE", 
                                 command = fileGUI.destroy)
 
@@ -54,10 +56,13 @@ def run(components, modes):
             locationError.grid(row = 2, column = 0, 
                             columnspan = 5, sticky = tk.W + tk.E)
 
-        fileContinue.grid(row = 3, column = 0, 
+        fileGap.grid(row = 3, column = 0, 
+                        columnspan = 5, sticky = tk.W + tk.E)
+
+        fileContinue.grid(row = 4, column = 0, 
                         columnspan = 5, sticky = tk.W + tk.E)
         
-        fileCancel.grid(row = 4, column = 0,
+        fileCancel.grid(row = 5, column = 0,
                         columnspan = 5, sticky = tk.W + tk.E)
 
         fileGUI.mainloop()
