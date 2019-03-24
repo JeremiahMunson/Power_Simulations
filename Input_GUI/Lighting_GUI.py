@@ -41,7 +41,7 @@ def lighting(components, modes, numberComponents, numberModes):
     lightingGap = tk.Label(lightingGUI, text = "\t")
 
     lightingFinish = tk.Button(lightingGUI,
-                            text = "FINISH", 
+                            text = "CONTINUE", 
                             command = finish)
 
     #Constraints_GUI.constraint(components, modes, numberComponents, numberModes))

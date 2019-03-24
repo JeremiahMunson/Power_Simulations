@@ -26,10 +26,10 @@ def runGUI():
         timeStepLabel = tk.Label(sim_GUI, text = "STK Time Step (sec)")
 
         runSIM = tk.Button(sim_GUI, 
-                        text = "CONTINUE", 
+                        text = "RUN SIMULATION", 
                         command = sim_GUI.destroy)
 
-        cancelProgram = tk.Button(sim_GUI, text = "Cancel",
+        cancelProgram = tk.Button(sim_GUI, text = "CANCEL",
                             command = cancel)
     
         simFileVariable = tk.StringVar()

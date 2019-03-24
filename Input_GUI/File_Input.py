@@ -38,10 +38,10 @@ def run(components, modes):
         errorTxt = "Could not find file at " + location
         locationError = tk.Label(fileGUI, text = errorTxt)
 
-        fileContinue = tk.Button(fileGUI, text = "Continue", 
+        fileContinue = tk.Button(fileGUI, text = "CONTINUE", 
                                 command = fileGUI.destroy)
 
-        fileCancel = tk.Button(fileGUI, text = "Cancel",
+        fileCancel = tk.Button(fileGUI, text = "CANCEL",
                             command = cancel)
     
         fileTitle.grid(row = 0, column = 0, 
