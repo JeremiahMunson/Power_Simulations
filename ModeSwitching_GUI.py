@@ -53,7 +53,7 @@ def switching(components, modes, numberComponents, numberModes):
     #               column = 0, 
     #               columnspan = 6, 
     #               sticky = tk.W + tk.E)
-    # TODO: fix back button integration with Mode_GUI.py
+    # TODO: back button should be working but double check it
 
     varSwitch = {}
     switchModes = {}
