@@ -26,7 +26,8 @@ def mode(components, modes, numberComponents, numberModes):
         # 0 is component not used
         compsInMode = {}
         for modeNumber in range(numberModes):
-            compsInMode = {componentName: modeCompChecks[modeNumber][componentName].get() for componentName in components}
+            for componentName in components:
+                compsInMode[componentName] = modeCompChecks[modeNumber][componentName].get()
             modes[varModeNames[modeNumber].get()] = Mode.Mode(
                                                             varModeNames[modeNumber].get(), 
                                                             components, 
@@ -60,10 +61,7 @@ def mode(components, modes, numberComponents, numberModes):
     modeContinue.grid(row = numberModes + 3, 
                     column = 0, 
                     columnspan = 2 + numberComponents, 
-                    sticky = tk.W + tk.E)
-
-    #modeBack.grid(row = numberModes + 4, column = 0, columnspan = 2 + numberComponents, sticky = tk.W + tk.E)
-        
+                    sticky = tk.W + tk.E)        
     
     # The mode name ENTRY BOX array. 
     # Same as 'compName' from components but for modes
@@ -135,7 +133,9 @@ def mode(components, modes, numberComponents, numberModes):
 
         modeNameLabel.grid(row = modeNumber+2, column = 0)
         modeNameEntry[modeNumber].grid(row = modeNumber+2, column = 1)  
-        {modeCompsRow[modeNumber][componentName].grid(row = modeNumber+2, column = compsColumn+2) for componentName, compsColumn in zip(components, range(numberComponents))}   
+        for componentName, compsColumn in zip(components, range(numberComponents)):
+            modeCompsRow[modeNumber][componentName].grid(row = modeNumber+2, 
+                                                        column = compsColumn+2)   
    
     modeGUI.mainloop()
          
@@ -151,12 +151,16 @@ def mode(components, modes, numberComponents, numberModes):
                     sameModes = False
                     break
         if(sameModes):
-            compsInMode = {componentName: modeCompChecks[modeNumber][componentName].get() for componentName in components}
+            for componentName in components:
+                compsInMode[componentName] = modeCompChecks[modeNumber][componentName].get()
+                
             modes[varModeNames[modeNumber].get()].changeComponents(components, 
                                                                 compsInMode)
         else:
             for modeNumber in range(numberModes):
-                compsInMode = {componentName: modeCompChecks[modeNumber][componentName].get() for componentName in components}
+                for componentName in components:
+                    compsInMode[componentName] = modeCompChecks[modeNumber][componentName].get()
+
                 modes[varModeNames[modeNumber].get()] = Mode.Mode(varModeNames[modeNumber].get(), 
                                                                 components, 
                                                                 compsInMode)

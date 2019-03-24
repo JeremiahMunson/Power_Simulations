@@ -62,26 +62,44 @@ def runGUI():
         timeStepVariable.set(5)
         timeStepEntry = tk.Entry(sim_GUI, textvariable = timeStepVariable)
     
-        simTitle.grid(row = 0, column = 0, columnspan = 4, sticky = tk.W + tk.E)
-        simFileLabel.grid(row = 1, column = 0, sticky = tk.E)
-        simFileEntry.grid(row = 1, column = 1, columnspan = 3, sticky = tk.W + tk.E)
+        simTitle.grid(row = 0, column = 0, 
+                    columnspan = 4, sticky = tk.W + tk.E)
+
+        simFileLabel.grid(row = 1, column = 0, 
+                        sticky = tk.E)
+
+        simFileEntry.grid(row = 1, column = 1, 
+                        columnspan = 3, sticky = tk.W + tk.E)
 
         if(not first):
             simFileError.grid(row = 2, column = 0, 
                             columnspan = 3)
 
         batteryLabel.grid(row = 3, column = 0, sticky = tk.E)
-        batteryEntry.grid(row = 3, column = 1, columnspan = 3, sticky = tk.W + tk.E)
+
+        batteryEntry.grid(row = 3, column = 1, 
+                        columnspan = 3, sticky = tk.W + tk.E)
+
         startLabel.grid(row = 4, column = 0, sticky = tk.E)
-        startEntry.grid(row = 4, column = 1, columnspan = 3, sticky = tk.W + tk.E)
+
+        startEntry.grid(row = 4, column = 1, 
+                        columnspan = 3, sticky = tk.W + tk.E)
         startUnitsLabel.grid(row = 5, column = 0, sticky = tk.E)
         unitWHR.grid(row = 5, column = 1)
         unitDOD.grid(row = 5, column = 2)
         timeStepLabel.grid(row = 6, column = 0, sticky = tk.E)
-        timeStepEntry.grid(row = 6, column = 1, columnspan = 3, sticky = tk.W + tk.E)
-        batteryGap.grid(row = 7, column = 0, columnspan = 4, sticky = tk.W + tk.E)
-        runSIM.grid(row = 8, column = 0, columnspan = 4, sticky = tk.W + tk.E)
-        cancelProgram.grid(row = 9, column = 0, columnspan = 4, sticky = tk.W + tk.E)
+
+        timeStepEntry.grid(row = 6, column = 1, 
+                        columnspan = 3, sticky = tk.W + tk.E)
+
+        batteryGap.grid(row = 7, column = 0,
+                        columnspan = 4, sticky = tk.W + tk.E)
+
+        runSIM.grid(row = 8, column = 0, 
+                    columnspan = 4, sticky = tk.W + tk.E)
+
+        cancelProgram.grid(row = 9, column = 0, 
+                        columnspan = 4, sticky = tk.W + tk.E)
 
         sim_GUI.mainloop()
 

@@ -44,7 +44,6 @@ def lighting(components, modes, numberComponents, numberModes):
                             text = "CONTINUE", 
                             command = finish)
 
-    #Constraints_GUI.constraint(components, modes, numberComponents, numberModes))
     lightingBack = tk.Button(lightingGUI, text = "BACK", command = back)
 
     lightingTitle.grid(row = 0, column = 0, 
@@ -88,7 +87,8 @@ def lighting(components, modes, numberComponents, numberModes):
                                                 text=text, 
                                                 variable=varLighting[index])
 
-            lightingChecks[index].grid(row = lightingRow + 2, column = index + 1)
+            lightingChecks[index].grid(row = lightingRow + 2, 
+                                    column = index + 1)
 
         lightingCheckVals[modeName] = varLighting
 
