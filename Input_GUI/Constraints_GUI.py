@@ -13,7 +13,11 @@ def constraint(components, modes, numberComponents, numberModes):
 
     def back():
         constraintGUI.destroy()
-        {mode.inputRequirementConstraints(varFirstEntry[modeName].get(), varFirstOption[modeName].get(), varSecondEntry[modeName].get(), varSecondOption[modeName].get()) for modeName, mode in modes.items()}
+        for modeName, mode in modes.items():
+            mode.inputRequirementConstraints(varFirstEntry[modeName].get(), 
+                                            varFirstOption[modeName].get(), 
+                                            varSecondEntry[modeName].get(), 
+                                            varSecondOption[modeName].get())
         
         ModeSwitching_GUI.switching(components, 
                                     modes, 
@@ -102,10 +106,8 @@ def constraint(components, modes, numberComponents, numberModes):
                                     textvariable = varSecondEntry[modeName])
             secondEntryBox[modeName].grid(row = 2 + k, column = 4)
 
-            #varFirstOption[modeName].set("NA")
-            #varSecondOption[modeName].set("NA")
-###############################################################################
             for textFreq, textDur, textDOD, optionsCol in zip(FREQUENCY, DURATION, DODWHR, range(len(FREQUENCY))):
+
                 if(mode.printRequirement() == "Regular" 
                         or mode.printRequirement() == "Random"):
                     firstOptions = tk.Radiobutton(constraintGUI, 
@@ -125,14 +127,15 @@ def constraint(components, modes, numberComponents, numberModes):
                     secondOptions.grid(row = 2+k, 
                                     column = optionsCol+5, 
                                     sticky = tk.W)
+
                 elif(mode.printRequirement() == "Power"):
+
                     firstOptions = tk.Radiobutton(constraintGUI, 
                                                 text = textDOD, 
                                                 variable = varFirstOption[modeName], 
                                                 value = DODWHR[textDOD])
                     
-                    firstOptions.grid(row = 2+k, 
-                                    column = optionsCol+2, 
+                    firstOptions.grid(row = 2+k, column = optionsCol+2, 
                                     sticky = tk.W)
                     
                     secondOptions = tk.Radiobutton(constraintGUI, 
@@ -140,8 +143,7 @@ def constraint(components, modes, numberComponents, numberModes):
                                                 variable = varSecondOption[modeName], 
                                                 value = DODWHR[textDOD])
                     
-                    secondOptions.grid(row = 2+k, 
-                                    column = optionsCol+5, 
+                    secondOptions.grid(row = 2+k, column = optionsCol+5, 
                                     sticky = tk.W)
 
         else:
@@ -157,7 +159,15 @@ def constraint(components, modes, numberComponents, numberModes):
     global first
 
     if(first):
-        {mode.inputRequirementConstraints(varFirstEntry[modeName].get(), varFirstOption[modeName].get(), varSecondEntry[modeName].get(), varSecondOption[modeName].get()) for modeName, mode in modes.items()}
-        return Lighting_GUI.lighting(components, modes, numberComponents, numberModes)
+        for modeName, mode in modes.items():
+
+            mode.inputRequirementConstraints(varFirstEntry[modeName].get(), 
+                                            varFirstOption[modeName].get(), 
+                                            varSecondEntry[modeName].get(), 
+                                            varSecondOption[modeName].get())
+
+        return Lighting_GUI.lighting(components, modes, 
+                                    numberComponents, numberModes)
+
     else: 
         return components, modes, numberComponents, numberModes

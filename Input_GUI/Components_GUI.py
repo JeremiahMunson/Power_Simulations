@@ -13,8 +13,10 @@ def comp(components, modes, numberComponents, numberModes):
 
     def back():
         compGUI.destroy()
-        # TODO: Is this a dictionary that I'm making?
-        components = {varCompNames[componentNumber].get(): varCompPowers[componentNumber].get() for componentNumber in range(numberComponents)}
+        components = dict()
+        for componentNumber in range(numberComponents):
+            key = varCompNames[componentNumber].get()
+            components[key] = varCompPowers[componentNumber].get()
         Size_GUI.size(components, modes)
         first = False
     
@@ -50,8 +52,16 @@ def comp(components, modes, numberComponents, numberModes):
     compNames.grid(row = 1, column = 1)
     compPwrs.grid(row = 1, column = 2)
     compGap.grid(row = numberComponents + 3, column = 0)
-    compContinue.grid(row = numberComponents + 4, column = 0, columnspan = 3, sticky = tk.W + tk.E)
-    #compBack.grid(row = numberComponents + 5, column = 0, columnspan = 3, sticky = tk.W + tk.E)
+
+    compContinue.grid(row = numberComponents + 4, 
+                    column = 0, 
+                    columnspan = 3, 
+                    sticky = tk.W + tk.E)
+
+    #compBack.grid(row = numberComponents + 5, 
+    #           column = 0, 
+    #           columnspan = 3, 
+    #           sticky = tk.W + tk.E)
     
     for componentNumber in range(numberComponents):
             # Making component name variable and component power variable.
@@ -76,10 +86,10 @@ def comp(components, modes, numberComponents, numberModes):
                             text = "Comp " + str(componentNumber + 1))
 
             compName[componentNumber] = tk.Entry(compGUI, 
-                                textvariable = varCompNames[componentNumber])
+                    textvariable = varCompNames[componentNumber])
             
             compPwr[componentNumber] = tk.Entry(compGUI, 
-                                textvariable = varCompPowers[componentNumber])
+                    textvariable = varCompPowers[componentNumber])
 
             comp.grid(row = componentNumber + 2, column = 0)
 
@@ -88,12 +98,16 @@ def comp(components, modes, numberComponents, numberModes):
 
             compPwr[componentNumber].grid(row = componentNumber + 2, 
                                         column = 2)
-    
-###############################################################################
             
     compGUI.mainloop()
 
     if(first):
         # TODO: Again, what exactly is this doing?
-        components = {varCompNames[componentNumber].get(): varCompPowers[componentNumber].get() for componentNumber in range(numberComponents)}
-        return Modes_GUI.mode(components, modes, numberComponents, numberModes)
+        components = dict()
+        for componentNumber in range(numberComponents):
+            key = varCompNames[componentNumber].get()
+            components[key] = varCompPowers[componentNumber].get()
+        return Modes_GUI.mode(components, 
+                            modes, 
+                            numberComponents, 
+                            numberModes)

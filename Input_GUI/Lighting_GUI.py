@@ -13,8 +13,15 @@ def lighting(components, modes, numberComponents, numberModes):
 
     def back():
         lightingGUI.destroy()
-        {mode.inputLightingConstraints((lightingCheckVals[modeName][0]).get(), (lightingCheckVals[modeName][1]).get(), (lightingCheckVals[modeName][2]).get()) for modeName, mode in modes.items()}
-        Constraints_GUI.constraint(components, modes, numberComponents, numberModes)
+        for modeName, mode in modes.items():
+            mode.inputLightingConstraints(lightingCheckVals[modeName][0].get(), 
+                                        lightingCheckVals[modeName][1].get(), 
+                                        lightingCheckVals[modeName][2].get())
+
+        Constraints_GUI.constraint(components, 
+                                modes, 
+                                numberComponents, 
+                                numberModes)
         #first = False
 
     lightingTitle = tk.Label(lightingGUI, 
@@ -33,22 +40,20 @@ def lighting(components, modes, numberComponents, numberModes):
     #Constraints_GUI.constraint(components, modes, numberComponents, numberModes))
     lightingBack = tk.Button(lightingGUI, text = "BACK", command = back)
 
-    lightingTitle.grid(row = 0, column = 0, columnspan = 4, sticky = tk.W + tk.E)
+    lightingTitle.grid(row = 0, column = 0, 
+                    columnspan = 4, sticky = tk.W + tk.E)
+
     lightingModesHead.grid(row = 1, column = 0)
     lightingSun.grid(row = 1, column = 1)
     lightingPenumbra.grid(row = 1, column = 2)
     lightingUmbra.grid(row = 1, column = 3)
     lightingGap.grid(row = numberModes + 3, column = 0)
 
-    lightingFinish.grid(row = numberModes + 4, 
-                    column = 0, 
-                    columnspan = 4, 
-                    sticky = tk.W + tk.E)
+    lightingFinish.grid(row = numberModes + 4, column = 0, 
+                    columnspan = 4, sticky = tk.W + tk.E)
 
-    lightingBack.grid(row = numberModes + 5, 
-                    column = 0, 
-                    columnspan = 4,
-                    sticky = tk.W + tk.E)
+    lightingBack.grid(row = numberModes + 5, column = 0, 
+                    columnspan = 4, sticky = tk.W + tk.E)
     
     lightingModes = {}
     lightingCheckVals = {}
@@ -71,13 +76,20 @@ def lighting(components, modes, numberComponents, numberModes):
         for text, index in zip(LIGHTING_OPTIONS, range(len(LIGHTING_OPTIONS))):
             varLighting[index] = tk.BooleanVar()
             varLighting[index].set(lights[index])
+
             lightingChecks[index] = tk.Checkbutton(lightingGUI,
                                                 text=text, 
                                                 variable=varLighting[index])
+
             lightingChecks[index].grid(row = lightingRow + 2, column = index + 1)
+            
         lightingCheckVals[modeName] = varLighting
 
     lightingGUI.mainloop()
 
-    {mode.inputLightingConstraints((lightingCheckVals[modeName][0]).get(), (lightingCheckVals[modeName][1]).get(), (lightingCheckVals[modeName][2]).get()) for modeName, mode in modes.items()} 
+    for modeName, mode in modes.items():
+        mode.inputLightingConstraints(lightingCheckVals[modeName][0].get(), 
+                                    lightingCheckVals[modeName][1].get(),
+                                    lightingCheckVals[modeName][2].get()) 
+
     return components, modes, numberComponents, numberModes

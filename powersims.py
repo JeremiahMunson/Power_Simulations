@@ -18,8 +18,9 @@ inputGUI = tk.Tk()
 varFileOverManual = tk.IntVar()
 # This makes sure neither button is pressed automatically
 varFileOverManual.set(3) 
+
 inputTitle = tk.Label(inputGUI,
-                    text = "Would you like to input the mission data manually or through a file?")
+        text = "Would you like to input the mission data manually or through a file?")
 
 fileButton = tk.Radiobutton(inputGUI,
                             text = "File Input", 
@@ -70,10 +71,10 @@ for name,mode in modes.items():
     strPrint = name + ": "
     for index in range(len(mode.components())):
         strPrint += mode.components()[index] + ", "
-    #for j in range(len(mode.components())):
-    #    strPrint += (mode.components()[j].name() + ", ")
+
     strPrint = strPrint[0:(len(strPrint) - 2)]
     print(strPrint)
+
 print("\n")
 
 print("Power Draw...")
@@ -82,7 +83,9 @@ for name,mode in modes.items():
     draw = 0
     for j in range(len(mode.components())):
         draw+=int(components[mode.components()[j]])
+
     print(modePowerPrint, draw, "mW")
+    
 print("\n")
 
 print("Mode Requirements and Rank...")

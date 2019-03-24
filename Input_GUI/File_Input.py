@@ -78,26 +78,24 @@ def run(components, modes):
     for i in range(len(mods)):
         tfComps = {}
         tfComps = checkModes(components, mods, i)
-        modes[mods['Name'].iloc[i]] = Mode.Mode(mods['Name'].iloc[i], 
+        key = mods['Name'].iloc[i]
+        modes[key] = Mode.Mode(mods['Name'].iloc[i], 
                                                 components, 
                                                 tfComps)
 
-        modes[mods['Name'].iloc[i]].assignRequirement(
-                                                    mods['Requirement'].iloc[i], 
-                                                    mods['Rank'].iloc[i])
+        modes[key].assignRequirement(mods['Requirement'].iloc[i], 
+                                    mods['Rank'].iloc[i])
 
         #modes[mods['Name'].iloc[i]].inputRank(mods['Rank'].iloc[i])
 
-        modes[mods['Name'].iloc[i]].inputRequirementConstraints(
-                                                            mods['Begin'].iloc[i], 
-                                                            mods['BeginUnits'].iloc[i],
-                                                            mods['End'].iloc[i], 
-                                                            mods['EndUnits'].iloc[i])
+        modes[key].inputRequirementConstraints(mods['Begin'].iloc[i], 
+                                            mods['BeginUnits'].iloc[i],
+                                            mods['End'].iloc[i], 
+                                            mods['EndUnits'].iloc[i])
                                                             
-        modes[mods['Name'].iloc[i]].inputLightingConstraints(
-                                                            mods['Sunlight'].iloc[i], 
-                                                            mods['Penumbra'].iloc[i], 
-                                                            mods['Umbra'].iloc[i])
+        modes[key].inputLightingConstraints(mods['Sunlight'].iloc[i], 
+                                            mods['Penumbra'].iloc[i], 
+                                            mods['Umbra'].iloc[i])
 
 
     return components, modes, len(comps), len(mods)
