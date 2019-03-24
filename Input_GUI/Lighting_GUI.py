@@ -24,6 +24,13 @@ def lighting(components, modes, numberComponents, numberModes):
                                 numberModes)
         #first = False
 
+    def finish():
+        lightingGUI.destroy()
+        for modeName, mode in modes.items():
+            mode.inputLightingConstraints(lightingCheckVals[modeName][0].get(), 
+                                        lightingCheckVals[modeName][1].get(),
+                                        lightingCheckVals[modeName][2].get())
+
     lightingTitle = tk.Label(lightingGUI, 
                             text = "SUNLIGHT/SHADE REQUIREMENTS")
 
@@ -35,7 +42,7 @@ def lighting(components, modes, numberComponents, numberModes):
 
     lightingFinish = tk.Button(lightingGUI,
                             text = "FINISH", 
-                            command = lightingGUI.destroy)
+                            command = finish)
 
     #Constraints_GUI.constraint(components, modes, numberComponents, numberModes))
     lightingBack = tk.Button(lightingGUI, text = "BACK", command = back)
@@ -82,14 +89,10 @@ def lighting(components, modes, numberComponents, numberModes):
                                                 variable=varLighting[index])
 
             lightingChecks[index].grid(row = lightingRow + 2, column = index + 1)
-            
+
         lightingCheckVals[modeName] = varLighting
 
     lightingGUI.mainloop()
-
-    for modeName, mode in modes.items():
-        mode.inputLightingConstraints(lightingCheckVals[modeName][0].get(), 
-                                    lightingCheckVals[modeName][1].get(),
-                                    lightingCheckVals[modeName][2].get()) 
+ 
 
     return components, modes, numberComponents, numberModes
