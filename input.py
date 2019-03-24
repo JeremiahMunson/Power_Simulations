@@ -7,6 +7,10 @@ import ModeSwitching_GUI
 import Constraints_GUI
 import Lighting_GUI
 
+# This row of #s is 79 characters longs,
+# the maximum line length set by PEP 8 -- Style Guide for Python Code
+###############################################################################
+
 def run(components, modes):
 
     # Get number of components and number of modes from user

@@ -1,5 +1,9 @@
 import tkinter as tk
 
+# This row of #s is 79 characters longs,
+# the maximum line length set by PEP 8 -- Style Guide for Python Code
+###############################################################################
+
 def runGUI():
     sim_GUI = tk.Tk()
     
@@ -9,7 +13,10 @@ def runGUI():
     startLabel = tk.Label(sim_GUI, text = "Battery Start Level")
     startUnitsLabel = tk.Label(sim_GUI, text = "Battery Start Units")
     timeStepLabel = tk.Label(sim_GUI, text = "STK Time Step (sec)")
-    runSIM = tk.Button(sim_GUI, text = "CONTINUE", command = sim_GUI.destroy)
+
+    runSIM = tk.Button(sim_GUI, 
+                    text = "CONTINUE", 
+                    command = sim_GUI.destroy)
     
     simFileVariable = tk.StringVar()
     simFileEntry = tk.Entry(sim_GUI, textvariable = simFileVariable)
@@ -21,8 +28,17 @@ def runGUI():
     startEntry = tk.Entry(sim_GUI, textvariable = startVariable)
     startWHRVariable = tk.BooleanVar()
     startWHRVariable.set(True)
-    unitWHR = tk.Radiobutton(sim_GUI, text = "WHr", variable = startWHRVariable, value = True)
-    unitDOD = tk.Radiobutton(sim_GUI, text = "DOD", variable = startWHRVariable, value = False)
+
+    unitWHR = tk.Radiobutton(sim_GUI, 
+                            text = "WHr", 
+                            variable = startWHRVariable, 
+                            value = True)
+
+    unitDOD = tk.Radiobutton(sim_GUI, 
+                            text = "DOD", 
+                            variable = startWHRVariable, 
+                            value = False)
+
     timeStepVariable = tk.IntVar()
     timeStepVariable.set(5)
     timeStepEntry = tk.Entry(sim_GUI, textvariable = timeStepVariable)
