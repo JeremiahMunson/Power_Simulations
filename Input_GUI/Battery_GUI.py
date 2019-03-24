@@ -19,6 +19,7 @@ def runGUI():
                     command = sim_GUI.destroy)
     
     simFileVariable = tk.StringVar()
+    simFileVariable.set("C:\\Users\...\\MasterMonth_Program2.txt") 
     simFileEntry = tk.Entry(sim_GUI, textvariable = simFileVariable)
     batteryVariable = tk.IntVar()
     batteryVariable.set(30)

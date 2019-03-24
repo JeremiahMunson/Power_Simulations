@@ -19,7 +19,7 @@ def run(components, modes):
     varLocation = tk.StringVar()
 
     # \t is tab so \testFile -> \t estFile but \\testFile -> \testFile
-    varLocation.set("C:\\Users\Jeremiah Munson\Desktop\\testFile2.csv") 
+    varLocation.set("C:\\Users\...\\testFile2.csv") 
     
     # A GUI that doesn't change size or anything, this is so nice
     fileTitle = tk.Label(fileGUI, text = "Input File Location")
