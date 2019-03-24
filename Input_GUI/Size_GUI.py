@@ -1,6 +1,6 @@
 import tkinter as tk
 import Mode
-import Components_GUI
+from Input_GUI import Components_GUI
 
 # This row of #s is 79 characters longs,
 # the maximum line length set by PEP 8 -- Style Guide for Python Code

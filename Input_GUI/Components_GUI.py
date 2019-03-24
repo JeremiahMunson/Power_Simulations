@@ -1,7 +1,6 @@
 import tkinter as tk
 import Mode
-import Modes_GUI
-import Size_GUI
+from Input_GUI import Modes_GUI, Size_GUI
 
 # This row of #s is 79 characters longs,
 # the maximum line length set by PEP 8 -- Style Guide for Python Code
@@ -16,7 +15,7 @@ def comp(components, modes, numberComponents, numberModes):
         compGUI.destroy()
         # TODO: Is this a dictionary that I'm making?
         components = {varCompNames[componentNumber].get(): varCompPowers[componentNumber].get() for componentNumber in range(numberComponents)}
-        Size_GUI.size(components, modes, numberComponents, numberModes)
+        Size_GUI.size(components, modes)
         first = False
     
     # This is the array of the component name ENTRY BOXES. 

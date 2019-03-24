@@ -1,7 +1,6 @@
 import tkinter as tk
 import Mode
-import ModeSwitching_GUI
-import Components_GUI
+from Input_GUI import ModeSwitching_GUI, Components_GUI
 
 first = True
 

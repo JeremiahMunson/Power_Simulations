@@ -1,7 +1,6 @@
 import tkinter as tk
 import Mode
-import Constraints_GUI
-import Modes_GUI
+from Input_GUI import Constraints_GUI, Modes_GUI
 
 first = True
 
