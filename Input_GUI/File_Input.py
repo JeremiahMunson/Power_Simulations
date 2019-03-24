@@ -1,4 +1,6 @@
 import tkinter as tk
+import os
+import sys
 import Mode
 import pandas as pd
 
@@ -14,39 +16,59 @@ warnings.filterwarnings('ignore')
 # Errors still come through
 
 def run(components, modes):
-    fileGUI = tk.Tk()
+    location = "C:\\Users\...\\testFile2.csv"
+
+    def cancel():
+        print("Program Terminated")
+        sys.exit()
+
+    first = True
     
-    varLocation = tk.StringVar()
-
-    # \t is tab so \testFile -> \t estFile but \\testFile -> \testFile
-    varLocation.set("C:\\Users\...\\testFile2.csv") 
+    while(True):
+        fileGUI = tk.Tk()
     
-    # A GUI that doesn't change size or anything, this is so nice
-    fileTitle = tk.Label(fileGUI, text = "Input File Location")
-    locationEntry = tk.Entry(fileGUI, textvariable = varLocation)
+        varLocation = tk.StringVar()
 
-    fileContinue = tk.Button(fileGUI, 
-                            text = "Continue", 
-                            command = fileGUI.destroy)
+        # \t is tab so \testFile -> \t estFile but \\testFile -> \testFile
+        varLocation.set(location) 
     
-    fileTitle.grid(row = 0, 
-                column = 0, 
-                columnspan = 5, 
-                sticky = tk.W + tk.E)
+        # A GUI that doesn't change size or anything, this is so nice
+        fileTitle = tk.Label(fileGUI, text = "Input File Location")
+        locationEntry = tk.Entry(fileGUI, textvariable = varLocation)
+        errorTxt = "Could not find file at " + location
+        locationError = tk.Label(fileGUI, text = errorTxt)
 
-    locationEntry.grid(row = 1, 
-                    column = 0, 
-                    columnspan = 5, 
-                    sticky = tk.W + tk.E)
+        fileContinue = tk.Button(fileGUI, text = "Continue", 
+                                command = fileGUI.destroy)
 
-    fileContinue.grid(row = 2, 
-                    column = 0, 
-                    columnspan = 5, 
-                    sticky = tk.W + tk.E)
+        fileCancel = tk.Button(fileGUI, text = "Cancel",
+                            command = cancel)
     
-    fileGUI.mainloop()
+        fileTitle.grid(row = 0, column = 0, 
+                    columnspan = 5,  sticky = tk.W + tk.E)
 
-    location = varLocation.get()
+        locationEntry.grid(row = 1, column = 0, 
+                        columnspan = 5, sticky = tk.W + tk.E)
+
+        if(not first):
+            locationError.grid(row = 2, column = 0, 
+                            columnspan = 5, sticky = tk.W + tk.E)
+
+        fileContinue.grid(row = 3, column = 0, 
+                        columnspan = 5, sticky = tk.W + tk.E)
+        
+        fileCancel.grid(row = 4, column = 0,
+                        columnspan = 5, sticky = tk.W + tk.E)
+
+        fileGUI.mainloop()
+
+        location = varLocation.get()
+
+        if(os.path.exists(location)):
+            break
+        else:
+            first = False
+
 
     input = pd.read_csv(location)
     # Spliting the Spreadsheet into two dataframes: 
