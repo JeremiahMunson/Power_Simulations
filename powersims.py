@@ -1,9 +1,7 @@
 ## These Power Simulations were created by Jeremiah Munson (Carthage '19) for the CaNOP CubeSat
 import tkinter as tk
 import Mode
-import Size_GUI
-import File_Input
-import Battery_GUI
+from Input_GUI import Size_GUI, File_Input, Battery_GUI
 
 # This row of #s is 79 characters longs,
 # the maximum line length set by PEP 8 -- Style Guide for Python Code
