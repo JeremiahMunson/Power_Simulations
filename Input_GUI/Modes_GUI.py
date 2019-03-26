@@ -28,18 +28,22 @@ def mode(components, modes, numberComponents, numberModes):
         for modeNumber in range(numberModes):
             for componentName in components:
                 compsInMode[componentName] = modeCompChecks[modeNumber][componentName].get()
+
             modes[varModeNames[modeNumber].get()] = Mode.Mode(
-                                                            varModeNames[modeNumber].get(), 
-                                                            components, 
-                                                            compsInMode)
+                                            varModeNames[modeNumber].get(), 
+                                            components, 
+                                            compsInMode)
+
         global first
         first = False
-        components, modes, numberComponents, number = Components_GUI.comp(components, 
-                                                                        modes, 
-                                                                        numberComponents, 
-                                                                        numberModes)
+        components, modes, numberComponents, number = Components_GUI.comp(
+                                                            components, 
+                                                            modes, 
+                                                            numberComponents, 
+                                                            numberModes)
     
-    # Making the title, column headings, and ADD and CONTINUE which will always be in the GUI
+    # Making the title, column headings, and 
+    # ADD and CONTINUE which will always be in the GUI
     modeTitle = tk.Label(modeGUI, text = "MODES")
     modeNameHead = tk.Label(modeGUI, text = "Name")
     modeCompHead = tk.Label(modeGUI, text = "Components Operating in Mode")
@@ -49,6 +53,7 @@ def mode(components, modes, numberComponents, numberModes):
                             text = "CONTIUE", 
                             command = modeGUI.destroy)
 
+    # modeBack will be fully implemented later
     modeBack = tk.Button(modeGUI, text = "BACK", command = back)
     
     # The title and headings will always be in the same place sin the 
@@ -97,7 +102,7 @@ def mode(components, modes, numberComponents, numberModes):
                                 text = "Mode " + str(modeNumber + 1))
 
         modeNameEntry[modeNumber] = tk.Entry(modeGUI, 
-                                            textvariable = varModeNames[modeNumber])
+                                    textvariable = varModeNames[modeNumber])
         
         # Clears the arrays specific to each row to make sure they 
         # aren't running over one row to another
@@ -108,25 +113,28 @@ def mode(components, modes, numberComponents, numberModes):
         # to a list and adds the actual checkboxes to a list of checkboxes
         if(len(modes) > 0):
             for modeIndex in fakeModes:
-                for componentName, compPower in components.items():
+                # for key in dict:
+                for componentName in components:
                     varModeCompCheck = tk.IntVar()
                     varModeCompCheck.set(0)
                     for compName in fakeModes[modeIndex].components():
                         if (compName == componentName):
                             varModeCompCheck.set(1)
                     varModeCompChecks[componentName] = (varModeCompCheck)
+
                     modeComps[componentName] = tk.Checkbutton(modeGUI, 
-                                                            text = componentName, 
-                                                            variable = varModeCompChecks[componentName])
+                                text = componentName, 
+                                variable = varModeCompChecks[componentName])
         
 
         else:
             for componentName, compPower in components.items():
                 varModeCompCheck = tk.IntVar()
                 varModeCompChecks[componentName] = (varModeCompCheck)
+                
                 modeComps[componentName] = tk.Checkbutton(modeGUI, 
-                                                        text = componentName, 
-                                                        variable = varModeCompChecks[componentName])
+                                text = componentName, 
+                                variable = varModeCompChecks[componentName])
         
         modeCompChecks[modeNumber] = varModeCompChecks
         modeCompsRow[modeNumber] = modeComps
@@ -141,7 +149,9 @@ def mode(components, modes, numberComponents, numberModes):
          
     global first
     if(first):
-        compsInMode = {}  # Dict of 1's and 0's where 1 is component is used and 0 is component not used
+        # Dict of 1's and 0's where 1 is component is used and 
+        # 0 is component not used
+        compsInMode = {}
         sameModes = False
         if(len(modes) > 0):
             sameModes = True
@@ -161,9 +171,10 @@ def mode(components, modes, numberComponents, numberModes):
                 for componentName in components:
                     compsInMode[componentName] = modeCompChecks[modeNumber][componentName].get()
 
-                modes[varModeNames[modeNumber].get()] = Mode.Mode(varModeNames[modeNumber].get(), 
-                                                                components, 
-                                                                compsInMode)
+                modes[varModeNames[modeNumber].get()] = Mode.Mode(
+                                            varModeNames[modeNumber].get(), 
+                                            components, 
+                                            compsInMode)
         
         return ModeSwitching_GUI.switching(components, 
                                         modes, 
