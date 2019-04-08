@@ -13,7 +13,7 @@ def mode(components, modes, numberComponents, numberModes):
 
     if(len(modes) > 0):
         fakeModes = {}
-        for (modeName, mode), k in zip(modes.items(), range(len(modes))):
+        for mode, k in zip(modes.values(), range(len(modes))):
             fakeModes[k] = mode
 
     def back():
