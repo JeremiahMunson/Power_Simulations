@@ -3,6 +3,7 @@ import os
 import sys
 import Mode
 import pandas as pd
+import Program_Terminated
 
 # This row of #s is 79 characters longs,
 # the maximum line length set by PEP 8 -- Style Guide for Python Code
@@ -19,7 +20,8 @@ def run(components, modes):
     location = "C:\\Users\...\\testFile2.csv"
 
     def cancel():
-        print("Program Terminated")
+        fileGUI.destroy()
+        Program_Terminated.terminate()
         sys.exit()
 
     first = True
