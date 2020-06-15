@@ -1,4 +1,5 @@
 import tkinter as tk
+import Program_Terminated
 import os
 import sys
 
@@ -11,9 +12,12 @@ def runGUI():
 
     first = True
 
+
     def cancel():
-        print("Program Terminated")
+        sim_GUI.destroy()
+        Program_Terminated.terminate()
         sys.exit()
+
 
     while(True):
         sim_GUI = tk.Tk()
